@@ -1,0 +1,76 @@
+
+services:
+
+  # Base de données MySQL
+  db:
+
+    image: mysql:8.4
+
+    container_name: ressources-db
+
+
+    restart: unless-stopped
+
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+
+ 
+    ports:
+      - "${MYSQL_PORT}:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+
+  # Back Symfony
+  back:
+
+    build:
+      context: ./Ressources-Relationnelles-Back
+      dockerfile: Dockerfile
+
+    container_name: ressources-back
+
+    restart: unless-stopped
+
+    depends_on:
+      - db
+
+    environment:
+      APP_ENV: ${APP_ENV}
+      DATABASE_URL: ${DATABASE_URL}
+
+    ports:
+      - "${BACK_PORT}:8000"
+
+
+  # Front Next.js
+  front:
+
+
+    build:
+      context: ./Ressources-Relationnelles-Front
+      dockerfile: Dockerfile
+
+    container_name: ressources-front
+
+
+    restart: unless-stopped
+
+    depends_on:
+      - back
+
+    environment:
+      NODE_ENV: ${NODE_ENV}
+      PORT: ${FRONT_PORT}
+
+    # Port du front
+    ports:
+      - "${FRONT_PORT}:3000"
+
+
+
+volumes:
+  mysql_data:
