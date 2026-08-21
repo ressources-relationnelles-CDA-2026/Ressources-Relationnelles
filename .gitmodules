@@ -1,0 +1,9 @@
+[submodule "Ressources-Relationnelles-Back"]
+	path = Ressources-Relationnelles-Back
+	url = git@github.com:ressources-relationnelles-CDA-2026/Ressources-Relationnelles-Back.git
+[submodule "Ressources-Relationnelles-Front"]
+	path = Ressources-Relationnelles-Front
+	url = git@github.com:ressources-relationnelles-CDA-2026/Ressources-Relationnelles-Front.git
+[submodule "Ressources-Relationnelles-Front-Mobile"]
+	path = Ressources-Relationnelles-Front-Mobile
+	url = git@github.com:ressources-relationnelles-CDA-2026/Ressources-Relationnelles-Front-Mobile.git
