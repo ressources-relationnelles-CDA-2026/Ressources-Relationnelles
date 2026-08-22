@@ -39,10 +39,8 @@ Les workflows sont déclenchés sur :
   - `dev`
   - `main`
 - les branches de travail :
-  - `Chore/**`
-  - `chore/**`
-  - `feat/**`
-  - `fix/**`
+  - `**/**`
+ 
 - les Pull Requests vers :
   - `dev`
   - `main`
