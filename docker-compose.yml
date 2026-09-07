@@ -26,13 +26,11 @@ services:
 
   # Back Symfony
   back:
-
     build:
       context: ./Ressources-Relationnelles-Back
       dockerfile: Dockerfile
 
     container_name: ressources-back
-
     restart: unless-stopped
 
     depends_on:
@@ -41,6 +39,9 @@ services:
     environment:
       APP_ENV: ${APP_ENV}
       DATABASE_URL: ${DATABASE_URL}
+
+    volumes:
+      - ./Ressources-Relationnelles-Back/.env:/app/.env:ro
 
     ports:
       - "${BACK_PORT}:8000"
