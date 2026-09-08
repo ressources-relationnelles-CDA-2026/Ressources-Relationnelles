@@ -49,14 +49,11 @@ services:
 
   # Front Next.js
   front:
-
-
     build:
       context: ./Ressources-Relationnelles-Front
       dockerfile: Dockerfile
 
     container_name: ressources-front
-
 
     restart: unless-stopped
 
@@ -67,7 +64,9 @@ services:
       NODE_ENV: ${NODE_ENV}
       PORT: ${FRONT_PORT}
 
-    # Port du front
+      API_URL: http://back:8000
+      NEXT_PUBLIC_API_URL: http://localhost:8000
+
     ports:
       - "${FRONT_PORT}:3000"
 
